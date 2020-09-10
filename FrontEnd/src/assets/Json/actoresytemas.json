@@ -1,0 +1,610 @@
+{
+  "Actores y temas": [
+    {
+      "Actores": [
+        [
+          "oms",
+          369
+        ],
+        [
+          "cdc",
+          58
+        ],
+        [
+          "covid-19",
+          47
+        ],
+        [
+          "tedros adhanom ghebreyesus",
+          35
+        ],
+        [
+          "afp",
+          31
+        ],
+        [
+          "opep",
+          29
+        ],
+        [
+          "msp",
+          24
+        ],
+        [
+          "apple",
+          18
+        ],
+        [
+          "ministerio de salud",
+          17
+        ],
+        [
+          "union europe",
+          17
+        ],
+        [
+          "centrar médico",
+          17
+        ],
+        [
+          "presidente chino",
+          16
+        ],
+        [
+          "cctv",
+          15
+        ],
+        [
+          "efe",
+          15
+        ],
+        [
+          "sanid",
+          14
+        ],
+        [
+          "centrar país",
+          13
+        ],
+        [
+          "american airlin",
+          13
+        ],
+        [
+          "unidad de cuidados intens",
+          13
+        ],
+        [
+          "cnn",
+          12
+        ],
+        [
+          "ministro de salud",
+          12
+        ],
+        [
+          "onu",
+          12
+        ],
+        [
+          "par",
+          11
+        ],
+        [
+          "global tim",
+          10
+        ],
+        [
+          "centro médico",
+          10
+        ],
+        [
+          "fmi",
+          10
+        ],
+        [
+          "pcc",
+          10
+        ],
+        [
+          "xinhu",
+          9
+        ],
+        [
+          "air franc",
+          9
+        ],
+        [
+          "iess",
+          9
+        ],
+        [
+          "centro salud",
+          8
+        ],
+        [
+          "bbc",
+          8
+        ],
+        [
+          "partido comunista chin",
+          8
+        ],
+        [
+          "centrar salud",
+          8
+        ],
+        [
+          "partido comun",
+          8
+        ],
+        [
+          "uci",
+          8
+        ],
+        [
+          "ministerio japonés",
+          7
+        ],
+        [
+          "cepi",
+          7
+        ],
+        [
+          "comision europe",
+          7
+        ],
+        [
+          "british airways",
+          7
+        ],
+        [
+          "united airlin",
+          7
+        ],
+        [
+          "coi",
+          7
+        ],
+        [
+          "guardia nacional",
+          6
+        ],
+        [
+          "ebol",
+          6
+        ],
+        [
+          "googl",
+          6
+        ],
+        [
+          "naciones un",
+          6
+        ],
+        [
+          "delt",
+          6
+        ],
+        [
+          "boeing",
+          6
+        ],
+        [
+          "sony",
+          6
+        ],
+        [
+          "ericsson",
+          6
+        ],
+        [
+          "holland america lin",
+          6
+        ]
+      ],
+      "Temas": [
+        [
+          "confirmar caso",
+          190
+        ],
+        [
+          "sanitario autoridad",
+          136
+        ],
+        [
+          "coronavirus epidemia",
+          111
+        ],
+        [
+          "chino ciudad",
+          106
+        ],
+        [
+          "síntoma presentar",
+          106
+        ],
+        [
+          "chino ciudadano",
+          93
+        ],
+        [
+          "caso registrar",
+          93
+        ],
+        [
+          "coronavirus brotar",
+          88
+        ],
+        [
+          "prensar rodar",
+          82
+        ],
+        [
+          "caso confirmar",
+          77
+        ],
+        [
+          "coronavirus caso",
+          77
+        ],
+        [
+          "chino autoridad",
+          73
+        ],
+        [
+          "habitante millón",
+          71
+        ],
+        [
+          "asiático país",
+          71
+        ],
+        [
+          "infectar personar",
+          68
+        ],
+        [
+          "personar millón",
+          68
+        ],
+        [
+          "medir tomar",
+          65
+        ],
+        [
+          "caso número",
+          64
+        ],
+        [
+          "coronavirus contagiar",
+          59
+        ],
+        [
+          "coronavirus propagación",
+          59
+        ],
+        [
+          "muerto dejar",
+          59
+        ],
+        [
+          "coronavirus casar",
+          58
+        ],
+        [
+          "respiratorio síndrome",
+          55
+        ],
+        [
+          "público salud",
+          54
+        ],
+        [
+          "sospechoso casar",
+          53
+        ],
+        [
+          "año hombre",
+          52
+        ],
+        [
+          "brotar epicentro",
+          51
+        ],
+        [
+          "social redar",
+          49
+        ],
+        [
+          "caso detectar",
+          48
+        ],
+        [
+          "contagiar personar",
+          48
+        ],
+        [
+          "viral neumonía",
+          46
+        ],
+        [
+          "prevención medir",
+          45
+        ],
+        [
+          "sospechoso caso",
+          45
+        ],
+        [
+          "coronavirus infectar",
+          45
+        ],
+        [
+          "contagiar caso",
+          45
+        ],
+        [
+          "virus propagación",
+          43
+        ],
+        [
+          "médico personal",
+          42
+        ],
+        [
+          "asiático gigante",
+          42
+        ],
+        [
+          "muerto causar",
+          41
+        ],
+        [
+          "chino turista",
+          41
+        ],
+        [
+          "respiratorio infección",
+          40
+        ],
+        [
+          "país coronavirus",
+          40
+        ],
+        [
+          "personar muerte",
+          39
+        ],
+        [
+          "personar matar",
+          38
+        ],
+        [
+          "registrar caso",
+          38
+        ],
+        [
+          "internacional emergencia",
+          38
+        ],
+        [
+          "frontero cerrar",
+          38
+        ],
+        [
+          "salud casar",
+          37
+        ],
+        [
+          "causar coronavirus",
+          37
+        ],
+        [
+          "año chino",
+          36
+        ],
+        [
+          "respiratorio enfermedad",
+          36
+        ],
+        [
+          "vacuno desarrollar",
+          36
+        ],
+        [
+          "caso caso",
+          34
+        ],
+        [
+          "coronavirus sospechoso",
+          34
+        ],
+        [
+          "muerte provocar",
+          33
+        ],
+        [
+          "epidemia epicentro",
+          33
+        ],
+        [
+          "morir personar",
+          33
+        ],
+        [
+          "cuarentena poner",
+          33
+        ],
+        [
+          "muerte causar",
+          32
+        ],
+        [
+          "coronavirus positivo",
+          32
+        ],
+        [
+          "chino provincia",
+          32
+        ],
+        [
+          "dejar coronavirus",
+          32
+        ],
+        [
+          "personar infectar",
+          31
+        ],
+        [
+          "positivo resultar",
+          31
+        ],
+        [
+          "coronavirus síntoma",
+          31
+        ],
+        [
+          "fatigar fiebre",
+          31
+        ],
+        [
+          "casar confirmar",
+          31
+        ],
+        [
+          "confirmar casar",
+          31
+        ],
+        [
+          "registrar país",
+          31
+        ],
+        [
+          "país treintena",
+          31
+        ],
+        [
+          "seco fatigar",
+          30
+        ],
+        [
+          "muerto número",
+          30
+        ],
+        [
+          "dificultar disnea",
+          29
+        ],
+        [
+          "fiebre fatigar seco",
+          29
+        ],
+        [
+          "disnea dificultar respirar",
+          29
+        ],
+        [
+          "local autoridad",
+          29
+        ],
+        [
+          "millón ciudad",
+          29
+        ],
+        [
+          "resfriar parecido",
+          29
+        ],
+        [
+          "emergencia declarar",
+          29
+        ],
+        [
+          "chino sanitario",
+          28
+        ],
+        [
+          "caso posible",
+          28
+        ],
+        [
+          "fiebre acompañar",
+          28
+        ],
+        [
+          "acompañar fiebre fatigar",
+          28
+        ],
+        [
+          "agudo respiratorio",
+          28
+        ],
+        [
+          "sanitario emergencia",
+          28
+        ],
+        [
+          "propagación evitar",
+          28
+        ],
+        [
+          "ciudadano repatriar",
+          28
+        ],
+        [
+          "prensar conferenciar",
+          27
+        ],
+        [
+          "gravar respiratorio",
+          27
+        ],
+        [
+          "país caso",
+          27
+        ],
+        [
+          "provincia capital",
+          27
+        ],
+        [
+          "parecido caso",
+          27
+        ],
+        [
+          "caso parecido resfriar",
+          27
+        ],
+        [
+          "afectar país",
+          27
+        ],
+        [
+          "personar número",
+          27
+        ],
+        [
+          "social red",
+          26
+        ],
+        [
+          "vida cobrar",
+          26
+        ],
+        [
+          "mortal víctima",
+          25
+        ],
+        [
+          "viajar personar",
+          25
+        ],
+        [
+          "disnea seco",
+          25
+        ]
+      ]
+    }
+  ]
+}
