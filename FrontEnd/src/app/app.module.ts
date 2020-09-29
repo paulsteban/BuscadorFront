@@ -10,6 +10,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CdkTableModule} from "@angular/cdk/table";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {TableModule} from "primeng/table";
+// For MDB Angular Free
+import { MDBBootstrapModule,WavesModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,6 +27,11 @@ import {TableModule} from "primeng/table";
     HttpClientModule,
     CdkTableModule,TableModule,
     BrowserAnimationsModule,MatProgressBarModule,
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    WavesModule,
+    ButtonsModule,
+    IconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

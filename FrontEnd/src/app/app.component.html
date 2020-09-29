@@ -1,374 +1,215 @@
-<head>
+<header class="h-100 ">
+  <mdb-navbar  SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav " [containerInside]="true">
+    <mdb-navbar-brand >
+      <a class="logo navbar-brand" href="#">
+        <strong>TargetBot</strong>
+      </a>
+    </mdb-navbar-brand>
+    <links>
+      <ul class="navbar-nav  ">
+        <li class="nav-item active waves-light" mdbWavesEffect>
+          <a class="nav-link">Inicio
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect>
+          <a class="nav-link" href="#targeting">Targeting</a>
+        </li>
+        <li class="nav-item waves-light" mdbWavesEffect>
+          <a class="nav-link" href="#sobre">Sobre targetbot</a>
+        </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+  <!-- Main -->
+  <div class="view intro-2">
+    <div class="full-bg-img">
+      <div class="mask rgba-purple-light flex-center">
+        <div class="container text-white text-center wow fadeInUp">
+         
+          <div class="row justify-content-center align-items-center minh-100">
+            <div class="col-lg-12">
+        
+              <div>
+                <img src="../assets/nsns.png" width="100" height="80">
+                <h1>TargetBot</h1>
 
-
-
-
-
-  <!-- Bootstrap Css -->
-  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Hoja de estilos -->
-  <link href="/assets/css/style.css" rel="stylesheet">
-
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,700&display=swap" rel="stylesheet">
-
-  <!-- Ionic icons -->
-  <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-
-</head>
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo {
-    height: 40px;
-    margin: 0 16px;
-  }
-
-  .toolbar #twitter-logo:hover {
-    opacity: 0.8;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  svg.material-icons {
-    height: 24px;
-    width: auto;
-  }
-
-  svg.material-icons:not(:last-child) {
-    margin-right: 8px;
-  }
-
-  .card svg.material-icons path {
-    fill: #888;
-  }
-
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 16px;
-  }
-
-  .card {
-    border-radius: 4px;
-    border: 1px solid #eee;
-    background-color: #fafafa;
-    height: 40px;
-    width: 200px;
-    margin: 0 8px 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
-    line-height: 24px;
-  }
-
-  .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
-
-  .card.card-small {
-    height: 16px;
-    width: 168px;
-  }
-
-  .card-container .card:not(.highlight-card) {
-    cursor: pointer;
-  }
-
-  .card-container .card:not(.highlight-card):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
-  }
-
-  .card-container .card:not(.highlight-card):hover .material-icons path {
-    fill: rgb(105, 103, 103);
-  }
-
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
-  }
-
-  .card.card.highlight-card span {
-    margin-left: 60px;
-  }
-
-  svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-  }
-
-  svg#rocket-smoke {
-    height: calc(100vh - 95px);
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-  .terminal {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 6px;
-    padding-top: 45px;
-    margin-top: 8px;
-    overflow: hidden;
-    background-color: rgb(15, 15, 16);
-  }
-
-  .terminal::before {
-    content: "\2022 \2022 \2022";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: rgb(58, 58, 58);
-    color: #c2c3c4;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 0;
-    padding: 14px 0;
-    text-indent: 4px;
-  }
-
-  .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    color: white;
-    padding: 0 1rem 1rem;
-    margin: 0;
-  }
-
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
-    line-height: 20px;
-  }
-
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-
-  .github-star-badge {
-    color: #24292e;
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
-    border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
-    margin-left: 4px;
-    font-weight: 600;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  }
-
-  .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
-    background-position: -.5em;
-  }
-
-  .github-star-badge .material-icons {
-    height: 16px;
-    width: 16px;
-    margin-right: 4px;
-  }
-
-  svg#clouds {
-    position: fixed;
-    bottom: -160px;
-    left: -230px;
-    z-index: -10;
-    width: 1920px;
-  }
-
-
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
-
-    svg#rocket-smoke {
-      right: 120px;
-      transform: rotate(-5deg);
-    }
-  }
-
-  @media screen and (max-width: 575px) {
-    svg#rocket-smoke {
-      display: none;
-      visibility: hidden;
-    }
-  }
-</style>
-
-<div class="d-flex" id="content-wrapper">
-
-  <!-- Sidebar -->
-  <div  *ngIf="isShown" id="sidebar-container" class="bg-light border-right">
-    <div class="logo">
-      <h4 class="font-weight-bold mb-0">Buscador</h4>
-    </div>
-    <div class="menu list-group-flush">
-      <a href="#" class="list-group-item list-group-item-action text-muted bg-light p-3 border-0"><i
-        class="icon ion-md-stats lead mr-2"></i> Historial</a>
-      <a href="#" class="list-group-item list-group-item-action text-muted bg-light p-3 border-0"><i
-        class="icon ion-md-calendar lead mr-2"></i> Eventos</a>
-      <a href="#" class="list-group-item list-group-item-action text-muted bg-light p-3 border-0"><i
-        class="icon ion-md-person lead mr-2"></i> Perfil</a>
-      <a href="#" class="list-group-item list-group-item-action text-muted bg-light p-3 border-0"> <i
-        class="icon ion-md-settings lead mr-2"></i> Configuración</a>
-    </div>
-  </div>
-  <!-- Fin sidebar -->
-
-  <!-- Page Content -->
-  <div id="page-content-wrapper" class="w-100 bg-light-blue">
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-      <div class="container">
-        <button class="btn btn-primary text-primary" (click)="toggleShow()" id="menu-toggle">Mostrar / esconder menu</button>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link text-dark" href="#">Inicio</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Paul Cisneros
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Mi perfil</a>
-                <a class="dropdown-item" href="#">Suscripciones</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Cerrar sesión</a>
+                <br>
+                <h5>Es la herramienta que te ayudará a obtener una lista de actores y temas.</h5>
+                <p>La solución perfecta a los problemas que surgen al realizar un estudio de mercado. Partirás con una lista de actores y temas que sean de tu interés y/o de la organización. Solo bastará con elegir una problemática en particular y las fuentes de las que deseas obtener la información.  </p>
+                <br>
+                <h4>Si inicias con TargetBot, tus conclusiones serán exitosas.</h4>
+      
               </div>
-            </li>
-          </ul>
+        
+            </div>
+        
+          </div>
+
+
+
         </div>
       </div>
-    </nav>
+    </div>
+  </div>
+  <!-- /.Main -->
+</header>
+<!--Main Navigation-->
 
-<div class="content" role="main">
-
-<app-ruta-pantalla-buscador></app-ruta-pantalla-buscador>
-
-</div></div></div>
-
-
+<!--Main Layout-->
 
 
-<router-outlet></router-outlet>
+<main class="text-center py-5" id="targeting">
+
+  <div class="container">
+    <div class="row" >
+      <div class="col-md-12">
+        <h2>Targeting</h2>
+
+        <p align="justify">
+          El Targeting es un proceso necesario para focalizar el sistema de escucha de la VS, permitiendo así obtener información relevante. Sin embargo, este proceso, necesita de informacion previa.
+
+        </p>
+        <app-ruta-pantalla-buscador></app-ruta-pantalla-buscador>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<div id="sobre">
+  <div class="page-footer font-small mdb-color pt-4 fondoelegante">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+  
+      <!-- Footer links -->
+      <div class="row text-center text-md-left mt-3 pb-3">
+  
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-6 col-xl-6 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Descripción</h6>
+          <p>
+            descripcion
+          </p>
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="w-100 clearfix d-md-none">
+  
+     
+  
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+          <p>
+            <a href="#!">Your Account</a>
+          </p>
+          <p>
+            <a href="#!">Become an Affiliate</a>
+          </p>
+          <p>
+            <a href="#!">Shipping Rates</a>
+          </p>
+          <p>
+            <a href="#!">Help</a>
+          </p>
+        </div>
+  
+        <!-- Grid column -->
+        <hr class="w-100 clearfix d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+          <p>
+            <mdb-icon fas icon="home" class="mr-3"></mdb-icon> New York, NY 10012, US
+          </p>
+          <p>
+            <mdb-icon fas icon="envelope" class="mr-3"></mdb-icon> info@example.com
+          </p>
+          <p>
+            <mdb-icon fas icon="phone" class="mr-3"></mdb-icon> + 01 234 567 88
+          </p>
+          <p>
+            <mdb-icon fas icon="print" class="mr-3"></mdb-icon> + 01 234 567 88
+          </p>
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Footer links -->
+  
+      <hr>
+  
+      <!-- Grid row -->
+      <div class="row d-flex align-items-center">
+  
+        <!-- Grid column -->
+        <div class="col-md-7 col-lg-8">
+  
+          <!--Copyright-->
+          <p class="text-center text-md-left">© 2020 Copyright:
+            <a href="https://mdbootstrap.com/">
+              <strong> MDBootstrap.com</strong>
+            </a>
+          </p>
+  
+        </div>
+
+        <div class="col-md-5 col-lg-4 ml-lg-0">
+  
+          <div class="text-center text-md-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a mdbBtn floating="true" size="sm" class="rgba-white-slight mx-1" mdbWavesEffect>
+                  <mdb-icon fab icon="facebook"></mdb-icon>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a mdbBtn floating="true" size="sm" class="rgba-white-slight mx-1" mdbWavesEffect>
+                  <mdb-icon fab icon="twitter"></mdb-icon>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a mdbBtn floating="true" size="sm" class="rgba-white-slight mx-1" mdbWavesEffect>
+                  <mdb-icon fab fab icon="google-plus"></mdb-icon>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a mdbBtn floating="true" size="sm" class="rgba-white-slight mx-1" mdbWavesEffect>
+                  <mdb-icon fab icon="linkedin"></mdb-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+  
+        </div>
+        <!-- Grid column -->
+  
+      </div>
+      <!-- Grid row -->
+  
+    </div>
+    <!-- Footer Links -->
+  
+  </div>
+</div>
+
+
+
+<!-- Footer -->
+<footer class="page-footer font-small blue fondonegro" color="elegant" >
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3"> 
+    <a href="https://mdbootstrap.com/"> Escuela Politécnica Nacional</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
