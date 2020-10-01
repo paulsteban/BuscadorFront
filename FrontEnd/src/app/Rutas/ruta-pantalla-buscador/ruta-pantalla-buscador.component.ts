@@ -6,6 +6,7 @@ import { InterfazQuery } from "../../Interfaz/Interfaz-query";
 import { __await } from "tslib";
 import listadeActores from 'src/assets/json/actoresytemas.json';
 import { InterfaActor } from "../../Interfaz/actores";
+import { ActoresTemasInterface } from 'src/app/Interfaz/ActoresTemas';
 @Component({
   selector: 'app-ruta-pantalla-buscador',
   templateUrl: './ruta-pantalla-buscador.component.html',
@@ -23,9 +24,17 @@ export class RutaPantallaBuscadorComponent implements OnInit {
   estadotabla = false;
   value;
   ActoresYTemas: any;
-  ActoresA: InterfaActor;
+  ActoresA: any;
   TemasA: any;
   botonProcesarActivado = true;
+  objetoGuardar: InterfazQuery;
+  palabraClave:string;
+  nytmodel=false;
+  comerciomodel=false;
+  scielomodel=false;
+  doajmodel=false;
+  presentarAlerta=false;
+  actoresTemasObtenidos:ActoresTemasInterface;
   constructor(private readonly _queryservicio: ServicioQueryService, private readonly _router: Router) { }
 
   ngOnInit(): void {
@@ -43,24 +52,37 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
   }
 
-  pruebBoton(f: NgForm) {
+  obtenerFormulario(f: NgForm) {
     if (f.value.BrowQuery) {
-      
+      if(this.nytmodel || this.doajmodel || this.scielomodel || this.doajmodel){
         this.botonProcesarActivado = false;
-        this._queryservicio.obtenrePrueba(f.value.BrowQuery,
+        this.presentarAlerta=false;
+
+        this._queryservicio.obtenerNYT(f.value.BrowQuery,
           f.value.BrowEstado,
           this.cbxpcs).subscribe(
-            (queryx: InterfazQuery) => {
-              console.log('Usuario mando Query');
-              console.log(queryx)
+            (respuesta: InterfazQuery) => {
+              console.log('Usuario Query:              ');
+              this.actoresTemasObtenidos=respuesta.ActoresTemas[0];
+              console.log(respuesta.ActoresTemas[0]+"******************"+this.actoresTemasObtenidos.Actores)
+              this.botonProcesarActivado = true;
+              this.cargartabla()
 
             },
             (error) => {
-              console.error('Error: ', error);
+              this.botonProcesarActivado = true;
 
+              console.error('Error: ', error);
+              alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
+
+  
             }
           )
-     
+      }else{
+        this.presentarAlerta=true;
+      }
+    
+
 
     }
     else {
@@ -75,11 +97,15 @@ export class RutaPantallaBuscadorComponent implements OnInit {
     this.arregloactoresaux = true;
     console.log("" + f.value.BrowQuery + f.value.BrowEstado + this.cbxpcs);
     // if (this.nombreContieneA(razaObjeto.nombre.toString())) {
+    this.objetoGuardar = {
+      estado: f.value.BrowEstado,
+      palabrasClaves: this.cbxpcs,
+      query: f.value.BrowQuery,
+    }
+
     const crearQuery$ = this._queryservicio
       .create(
-        f.value.BrowQuery,
-        f.value.BrowEstado,
-        this.cbxpcs,
+        this.objetoGuardar
       );
 
     crearQuery$
@@ -96,21 +122,21 @@ export class RutaPantallaBuscadorComponent implements OnInit {
       );
   }
 
-  onClickMx(cbxpc) {
-    console.log("Cuantos inician:" + this.cbxpcs)
+  eliminarElemento(cbxpc:any) {
     this.cbxpcs.splice(this.cbxpcs.findIndex(rol => rol === cbxpc), 1);
-    console.log("Eliminado:" + this.cbxpcs)
   }
 
 
-  onClickRol(formularioRol: NgForm) {
-    const agregarrol = this.cbxpcs.some(rol => rol === formularioRol.value.BrowPCx);
+  agregarPalabra() {
+    const agregarrol = this.cbxpcs.some(rol => rol === this.palabraClave);
     if (agregarrol == true) {
       console.log("No se creo la palabra");
       alert("Palabra repetido");
 
     } else {
-      this.cbxpcs.push(formularioRol.value.BrowPCx)
+      
+      this.cbxpcs.push(this.palabraClave)
+      this.palabraClave=''
     }
   }
   incrementarbarra() {
@@ -124,7 +150,8 @@ export class RutaPantallaBuscadorComponent implements OnInit {
   cargartabla() {
     this.estadotabla = true;
     this.ActoresYTemas = listadeActores;
-    this.ActoresA = this.ActoresYTemas[0].Actores
-    this.TemasA = this.ActoresYTemas[0].Temas
+    this.ActoresA = this.actoresTemasObtenidos.Actores
+    this.TemasA = this.actoresTemasObtenidos.Temas
   }
+
 }

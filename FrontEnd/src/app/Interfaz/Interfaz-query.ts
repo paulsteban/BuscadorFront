@@ -1,7 +1,9 @@
+import { ActoresTemasInterface } from "../Interfaz/ActoresTemas";
+
 export interface InterfazQuery {
 
   query: string;
   estado: string;
-  palabrasclaves: string[];
-
+  palabrasClaves: string[];
+  ActoresTemas?:ActoresTemasInterface[];
 }

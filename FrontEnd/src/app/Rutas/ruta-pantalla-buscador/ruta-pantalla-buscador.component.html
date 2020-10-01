@@ -3,7 +3,7 @@
 
 
   <!-- Default form register -->
-  <form class="text-center border border-light p-5"  #f="ngForm" (ngSubmit)="pruebBoton(f)" novalidate >
+  <form class="text-center border border-light p-5"  #f="ngForm" (ngSubmit)="obtenerFormulario(f)" novalidate >
 
     <p class="h4 mb-4">Criterios de búsqueda</p>
 
@@ -28,28 +28,28 @@
       <div class="col-md-6 mb-4">
         <div class="custom-control custom-checkbox">
 
-          <input type="checkbox" class="custom-control-input" id="fuente1">
-          <label class="custom-control-label" for="fuente1">Subscribe to our newsletter</label>
+          <input type="checkbox" class="custom-control-input" name="nyts" [(ngModel)]="nytmodel"  id="nyt">
+          <label class="custom-control-label" for="nyt" >The New York Times</label>
 
 
         </div>
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="fuente2">
-          <label class="custom-control-label" for="fuente2">Subscribe to our newsletter</label>
+          <input type="checkbox" class="custom-control-input"  name="comercio" [(ngModel)]="comerciomodel" id="comercio">
+          <label class="custom-control-label" for="comercio">El comercio</label>
 
         </div>
 
       </div>
       <div class="col-md-6">
         <div class=" custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="fuente3">
-          <label class="custom-control-label" for="fuente3">Subscribe to our newsletter</label>
+          <input type="checkbox" class="custom-control-input" name="scielo" [(ngModel)]="scielomodel" id="scielo">
+          <label class="custom-control-label" for="scielo">SciELO</label>
 
         </div>
 
         <div class=" custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="fuente3">
-          <label class="custom-control-label" for="fuente3">Subscribe to our newsletter</label>
+          <input type="checkbox" class="custom-control-input" name="doaj" [(ngModel)]="doajmodel" id="doaj">
+          <label class="custom-control-label" for="doaj">DOAJ</label>
 
         </div>
       </div>
@@ -66,7 +66,7 @@
         <form #formularioPC="ngForm" novalidate>
 
 
-          <input type="text" id="BrowPCx" name="BrowPCx" ngModel class="form-control" placeholder="Palabra clave"
+          <input type="text" id="BrowPCx" name="BrowPCx" [(ngModel)]="palabraClave" class="form-control" placeholder="Palabra clave"
             aria-describedby="palabraCD">
           <small id="palabraCD" class="form-text text-muted mb-2">
             Opcional: puede ingresar palabras claves que orienten la creación de las listas
@@ -78,8 +78,8 @@
             <option *ngFor="let cbxpc of cbxpcs" value={{cbxpc}}>
           </datalist>
 
-          <button  type="button" mdbBtn color="success" mdbWavesEffect (click)="onClickRol(formularioPC)">
-            Agregar roles
+          <button *ngIf="botonProcesarActivado" type="button" mdbBtn color="success" mdbWavesEffect (click)="agregarPalabra()">
+            Agregar palabra
           </button>
         </form>
 
@@ -90,7 +90,7 @@
       <div class="col-md-12">
         <div *ngFor="let cbxpc of cbxpcs">
 
-          <button  mdbBtn type="button"  size="sm" color="elegant" mdbWavesEffect icon="pi pi-times" (click)="onClickMx(cbxpc)">
+          <button  mdbBtn type="button"  size="sm" color="elegant" mdbWavesEffect icon="pi pi-times" (click)="eliminarElemento(cbxpc)">
             {{cbxpc}} <strong>X</strong>
           </button>
 
@@ -98,13 +98,24 @@
       </div>
 
     </div>
+  
+   
 
 
-    <button class="btn btn-info my-4 btn-block" type="submit" [disabled]="!f.dirty">Generar lista</button>
+    <div class="alert alert-danger" *ngIf="presentarAlerta" role="alert">
+      Debe seleccionar al menos una fuente de información
+    </div>
 
 
+    <img *ngIf="!botonProcesarActivado" width="600" height="100" src="../../../assets/internetcargado.gif" alt="">
+
+    <button *ngIf="botonProcesarActivado" class="btn btn-info my-4 btn-block" type="submit" [disabled]="!f.dirty">Generar lista</button>
+    <div *ngIf="!botonProcesarActivado" class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
 
   </form>
+
 
 <!--
 

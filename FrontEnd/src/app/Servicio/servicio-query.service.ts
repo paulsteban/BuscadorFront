@@ -12,33 +12,20 @@ export class ServicioQueryService {
   nombreModelo = "Buscador";
   constructor(private readonly _httpClient: HttpClient) { }
 
-  create(query: string,
-    estado: string,
-    palabrasclaves: string[],
-  ): Observable<InterfazQuery> {
-
-    const objetoAGuardar = {
-      query: query,
-      estado: estado,
-      palabrasClaves: palabrasclaves,
-
-    };
+  create(objetoGuardar:InterfazQuery): Observable<InterfazQuery> {
 
     const url = environment.url;
 
 
-    console.log(objetoAGuardar)
+    console.log(objetoGuardar)
 
     return this._httpClient
-      .post(url, objetoAGuardar)
+      .post(url, objetoGuardar)
       .pipe(map(r => <InterfazQuery>r)); // Castear
   }
 
 
-  obtenrePrueba(query: string,
-    estado: string,
-    palabrasclaves: string[],
-  ): Observable<InterfazQuery> {
+  obtenerNYT(query: string, estado: string, palabrasclaves: string[]): Observable<InterfazQuery> {
 
     const objetoAGuardar = {
       query: query,
@@ -47,13 +34,13 @@ export class ServicioQueryService {
 
     };
 
-    const url = environment.url;
+    const url = environment.url+'nyt';
 
 
     console.log(objetoAGuardar)
 
     return this._httpClient
-      .post(url,objetoAGuardar)
+      .post(url, objetoAGuardar)
       .pipe(map(r => <InterfazQuery>r)); // Castear
   }
 }
