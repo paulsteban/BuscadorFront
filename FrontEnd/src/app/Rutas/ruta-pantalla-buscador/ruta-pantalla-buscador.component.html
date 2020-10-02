@@ -2,13 +2,18 @@
 
 
 
+
+
+
+
   <!-- Default form register -->
-  <form class="text-center border border-light p-5"  #f="ngForm" (ngSubmit)="obtenerFormulario(f)" novalidate >
+  <form class="text-center border border-light p-5" #f="ngForm" (ngSubmit)="obtenerFormulario(f)" novalidate>
 
     <p class="h4 mb-4">Criterios de búsqueda</p>
 
 
-    <input type="text" class="form-control  mb-1" id="BrowQuery" name="BrowQuery" placeholder="Temática" autocomplete="off" ngModel />
+    <input type="text" class="form-control  mb-1" id="BrowQuery" name="BrowQuery" placeholder="Temática"
+      autocomplete="off" ngModel />
 
     <small id="BrowQuery" class="form-text text-muted mb-4">
       Tema general para iniciar a crear la lista de actores y temas.
@@ -28,13 +33,13 @@
       <div class="col-md-6 mb-4">
         <div class="custom-control custom-checkbox">
 
-          <input type="checkbox" class="custom-control-input" name="nyts" [(ngModel)]="nytmodel"  id="nyt">
-          <label class="custom-control-label" for="nyt" >The New York Times</label>
+          <input type="checkbox" class="custom-control-input" name="nyts" [(ngModel)]="nytmodel" id="nyt">
+          <label class="custom-control-label" for="nyt">The New York Times</label>
 
 
         </div>
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input"  name="comercio" [(ngModel)]="comerciomodel" id="comercio">
+          <input type="checkbox" class="custom-control-input" name="comercio" [(ngModel)]="comerciomodel" id="comercio">
           <label class="custom-control-label" for="comercio">El comercio</label>
 
         </div>
@@ -66,8 +71,8 @@
         <form #formularioPC="ngForm" novalidate>
 
 
-          <input type="text" id="BrowPCx" name="BrowPCx" [(ngModel)]="palabraClave" class="form-control" placeholder="Palabra clave"
-            aria-describedby="palabraCD">
+          <input type="text" id="BrowPCx" name="BrowPCx" [(ngModel)]="palabraClave" class="form-control"
+            placeholder="Palabra clave" aria-describedby="palabraCD">
           <small id="palabraCD" class="form-text text-muted mb-2">
             Opcional: puede ingresar palabras claves que orienten la creación de las listas
           </small>
@@ -78,7 +83,8 @@
             <option *ngFor="let cbxpc of cbxpcs" value={{cbxpc}}>
           </datalist>
 
-          <button *ngIf="botonProcesarActivado" type="button" mdbBtn color="success" mdbWavesEffect (click)="agregarPalabra()">
+          <button *ngIf="botonProcesarActivado" type="button" mdbBtn color="success" mdbWavesEffect
+            (click)="agregarPalabra()">
             Agregar palabra
           </button>
         </form>
@@ -90,7 +96,8 @@
       <div class="col-md-12">
         <div *ngFor="let cbxpc of cbxpcs">
 
-          <button  mdbBtn type="button"  size="sm" color="elegant" mdbWavesEffect icon="pi pi-times" (click)="eliminarElemento(cbxpc)">
+          <button mdbBtn type="button" size="sm" color="elegant" mdbWavesEffect icon="pi pi-times"
+            (click)="eliminarElemento(cbxpc)">
             {{cbxpc}} <strong>X</strong>
           </button>
 
@@ -98,8 +105,8 @@
       </div>
 
     </div>
-  
-   
+
+
 
 
     <div class="alert alert-danger" *ngIf="presentarAlerta" role="alert">
@@ -109,15 +116,22 @@
 
     <img *ngIf="!botonProcesarActivado" width="600" height="100" src="../../../assets/internetcargado.gif" alt="">
 
-    <button *ngIf="botonProcesarActivado" class="btn btn-info my-4 btn-block" type="submit" [disabled]="!f.dirty">Generar lista</button>
-    <div *ngIf="!botonProcesarActivado" class="progress">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-    </div>
+    <button *ngIf="botonProcesarActivado" class="btn btn-info my-4 btn-block" type="submit" (click)="progressBar.start()"
+      [disabled]="!f.dirty">Generar lista</button>
+  
+
+    
+
+
+
 
   </form>
 
+  <ng-progress #progressBar direction=ltr speed=2000 trickleSpeed=9000 debounceTime=500 meteor=true spinner=true spinnerPosition=right
+  thick=true fixed=true min=1 max=99 ease=linear color=blue started=onStarted() completed=onCompleted()></ng-progress>
 
-<!--
+  
+  <!--
 
   <form (ngSubmit)="pruebBoton(f)" novalidate>
     <div class="row">
@@ -226,17 +240,12 @@
 
 
 
-
-
-
-
-
 <div class="container">
   <div class="row">
 
     <div class="col-md-6">
       <div class="table-responsive">
-        <p-table [columns]="cols" [(value)]="ActoresA" [paginator]="true" [rows]="10" *ngIf="estadotabla">
+        <p-table [columns]="tituloActores" [(value)]="ActoresA" [paginator]="true" [rows]="10" *ngIf="estadotabla">
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th *ngFor="let col of columns" style="color: #fff; background-color: #337ab7; border-color: #337ab7;">
@@ -258,7 +267,7 @@
 
     <div class="col-md-6">
       <div class="table-responsive">
-        <p-table [columns]="cols" [(value)]="TemasA" [paginator]="true" [rows]="10" *ngIf="estadotabla">
+        <p-table [columns]="tituloTemas" [(value)]="TemasA" [paginator]="true" [rows]="10" *ngIf="estadotabla">
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th *ngFor="let col of columns" style="color: #fff; background-color: #337ab7; border-color: #337ab7;">

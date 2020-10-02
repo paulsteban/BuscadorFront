@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ServicioQueryService } from "../../Servicio/servicio-query.service";
@@ -7,6 +7,8 @@ import { __await } from "tslib";
 import listadeActores from 'src/assets/json/actoresytemas.json';
 import { InterfaActor } from "../../Interfaz/actores";
 import { ActoresTemasInterface } from 'src/app/Interfaz/ActoresTemas';
+import { NgProgressComponent } from 'ngx-progressbar';
+
 @Component({
   selector: 'app-ruta-pantalla-buscador',
   templateUrl: './ruta-pantalla-buscador.component.html',
@@ -18,7 +20,8 @@ export class RutaPantallaBuscadorComponent implements OnInit {
   show1: boolean = true;
   hideme = true;
   cbxpcs = [];
-  cols: any[];
+  tituloActores: any[];
+  tituloTemas: any[];
   arregloactoresaux = false;
   query: string;
   estadotabla = false;
@@ -35,12 +38,19 @@ export class RutaPantallaBuscadorComponent implements OnInit {
   doajmodel=false;
   presentarAlerta=false;
   actoresTemasObtenidos:ActoresTemasInterface;
+  @ViewChild(NgProgressComponent) progressBar: NgProgressComponent;
+
   constructor(private readonly _queryservicio: ServicioQueryService, private readonly _router: Router) { }
 
   ngOnInit(): void {
-    this.cols = [
-      { field: 'actor', header: 'Actor' },
-      { field: 'cantidad', header: 'Cantidad' }
+    this.tituloActores = [
+      { field: 'actor', header: 'Actores' },
+      { field: 'cantidad', header: 'Repeticiones' }
+
+    ];
+    this.tituloTemas = [
+      { field: 'temas', header: 'Temas' },
+      { field: 'cantidad', header: 'Repeticiones' }
 
     ];
 
@@ -62,16 +72,15 @@ export class RutaPantallaBuscadorComponent implements OnInit {
           f.value.BrowEstado,
           this.cbxpcs).subscribe(
             (respuesta: InterfazQuery) => {
-              console.log('Usuario Query:              ');
+              this.progressBar.complete();
               this.actoresTemasObtenidos=respuesta.ActoresTemas[0];
-              console.log(respuesta.ActoresTemas[0]+"******************"+this.actoresTemasObtenidos.Actores)
               this.botonProcesarActivado = true;
               this.cargartabla()
 
             },
             (error) => {
+              this.progressBar.complete();
               this.botonProcesarActivado = true;
-
               console.error('Error: ', error);
               alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
 
@@ -128,6 +137,7 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
 
   agregarPalabra() {
+
     const agregarrol = this.cbxpcs.some(rol => rol === this.palabraClave);
     if (agregarrol == true) {
       console.log("No se creo la palabra");

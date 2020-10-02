@@ -12,6 +12,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {TableModule} from "primeng/table";
 // For MDB Angular Free
 import { MDBBootstrapModule,WavesModule, ButtonsModule, IconsModule } from 'angular-bootstrap-md';
+import { NgProgressModule } from 'ngx-progressbar';
 
 
 
@@ -31,7 +32,8 @@ import { MDBBootstrapModule,WavesModule, ButtonsModule, IconsModule } from 'angu
     FormsModule,
     WavesModule,
     ButtonsModule,
-    IconsModule
+    IconsModule,
+    NgProgressModule
   ],
   providers: [],
   bootstrap: [AppComponent]
