@@ -43,4 +43,42 @@ export class ServicioQueryService {
       .post(url, objetoAGuardar)
       .pipe(map(r => <InterfazQuery>r)); // Castear
   }
+
+  obtenerComercio(query: string, estado: string, palabrasclaves: string[]): Observable<InterfazQuery> {
+
+    const objetoAGuardar = {
+      query: query,
+      estado: estado,
+      palabrasClave: palabrasclaves
+
+    };
+
+    const url = environment.url+'comercio';
+
+
+    console.log(objetoAGuardar)
+
+    return this._httpClient
+      .post(url, objetoAGuardar)
+      .pipe(map(r => <InterfazQuery>r)); // Castear
+  }
+  obtenerDoaj(query: string, estado: string, palabrasclaves: string[]): Observable<InterfazQuery> {
+
+    const objetoAGuardar = {
+      query: query,
+      estado: estado,
+      palabrasClave: palabrasclaves
+
+    };
+
+    const url = environment.url+'doaj';
+
+
+    console.log(objetoAGuardar)
+
+    return this._httpClient
+      .post(url, objetoAGuardar)
+      .pipe(map(r => <InterfazQuery>r)); // Castear
+  }
+
 }

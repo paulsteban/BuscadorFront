@@ -27,17 +27,17 @@ export class RutaPantallaBuscadorComponent implements OnInit {
   estadotabla = false;
   value;
   ActoresYTemas: any;
-  ActoresA: any;
-  TemasA: any;
+  ActoresA: any = [];
+  TemasA: any = [];
   botonProcesarActivado = true;
   objetoGuardar: InterfazQuery;
-  palabraClave:string;
-  nytmodel=false;
-  comerciomodel=false;
-  scielomodel=false;
-  doajmodel=false;
-  presentarAlerta=false;
-  actoresTemasObtenidos:ActoresTemasInterface;
+  palabraClave: string;
+  nytmodel = false;
+  comerciomodel = false;
+  scielomodel = false;
+  doajmodel = false;
+  presentarAlerta = false;
+  actoresTemasObtenidos: ActoresTemasInterface;
   @ViewChild(NgProgressComponent) progressBar: NgProgressComponent;
 
   constructor(private readonly _queryservicio: ServicioQueryService, private readonly _router: Router) { }
@@ -64,33 +64,103 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
   obtenerFormulario(f: NgForm) {
     if (f.value.BrowQuery) {
-      if(this.nytmodel || this.doajmodel || this.scielomodel || this.doajmodel){
+      if (this.nytmodel || this.comerciomodel || this.scielomodel || this.doajmodel) {
+
+
+        this.ActoresA = []
+        this.TemasA = []
+        this.progressBar.start();
         this.botonProcesarActivado = false;
-        this.presentarAlerta=false;
+        this.presentarAlerta = false;
 
-        this._queryservicio.obtenerNYT(f.value.BrowQuery,
-          f.value.BrowEstado,
-          this.cbxpcs).subscribe(
-            (respuesta: InterfazQuery) => {
-              this.progressBar.complete();
-              this.actoresTemasObtenidos=respuesta.ActoresTemas[0];
-              this.botonProcesarActivado = true;
-              this.cargartabla()
+        if (this.comerciomodel) {
+          this._queryservicio.obtenerComercio(f.value.BrowQuery,
+            f.value.BrowEstado,
+            this.cbxpcs).subscribe(
+              (respuesta: InterfazQuery) => {
+                console.log(respuesta.ActoresTemas[0])
+                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
+                this.botonProcesarActivado = true;
 
-            },
-            (error) => {
-              this.progressBar.complete();
-              this.botonProcesarActivado = true;
-              console.error('Error: ', error);
-              alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
+              },
+              (error) => {
+                this.progressBar.complete();
+                this.botonProcesarActivado = true;
+                console.error('Error: ', error);
+                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
 
-  
-            }
-          )
-      }else{
-        this.presentarAlerta=true;
+
+              }
+            )
+        }else if (this.nytmodel){
+          this._queryservicio.obtenerNYT(f.value.BrowQuery,
+            f.value.BrowEstado,
+            this.cbxpcs).subscribe(
+              (respuesta: InterfazQuery) => {
+                console.log(respuesta.ActoresTemas[0])
+                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
+                this.botonProcesarActivado = true;
+
+              },
+              (error) => {
+                this.progressBar.complete();
+                this.botonProcesarActivado = true;
+                console.error('Error: ', error);
+                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
+
+
+              }
+            )
+        }else if(this.doajmodel){
+          this._queryservicio.obtenerDoaj(f.value.BrowQuery,
+            f.value.BrowEstado,
+            this.cbxpcs).subscribe(
+              (respuesta: InterfazQuery) => {
+                console.log(respuesta.ActoresTemas[0])
+                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
+                this.botonProcesarActivado = true;
+
+              },
+              (error) => {
+                this.progressBar.complete();
+                this.botonProcesarActivado = true;
+                console.error('Error: ', error);
+                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
+
+
+              }
+            )
+        }else{
+          console.log("scielo")
+          this._queryservicio.obtenerDoaj(f.value.BrowQuery,
+            f.value.BrowEstado,
+            this.cbxpcs).subscribe(
+              (respuesta: InterfazQuery) => {
+                console.log(respuesta.ActoresTemas[0])
+                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
+                this.botonProcesarActivado = true;
+
+              },
+              (error) => {
+                this.progressBar.complete();
+                this.botonProcesarActivado = true;
+                console.error('Error: ', error);
+                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
+
+
+              }
+            )
+        }
+
+
+
+        this.progressBar.complete();
+
+        this.cargartabla()
+      } else {
+        this.presentarAlerta = true;
       }
-    
+
 
 
     }
@@ -100,38 +170,12 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
   }
 
+  obtenerComercio() {
 
-  onClickMe(f: NgForm) {
-    this.cargartabla()
-    this.arregloactoresaux = true;
-    console.log("" + f.value.BrowQuery + f.value.BrowEstado + this.cbxpcs);
-    // if (this.nombreContieneA(razaObjeto.nombre.toString())) {
-    this.objetoGuardar = {
-      estado: f.value.BrowEstado,
-      palabrasClaves: this.cbxpcs,
-      query: f.value.BrowQuery,
-    }
-
-    const crearQuery$ = this._queryservicio
-      .create(
-        this.objetoGuardar
-      );
-
-    crearQuery$
-      .subscribe(
-        (queryx: InterfazQuery) => {
-          console.log('Usuario mando Query');
-          alert(`Solicitud Procesada: ${queryx.query}`);
-
-        },
-        (error) => {
-          console.error('Error: ', error);
-
-        }
-      );
   }
 
-  eliminarElemento(cbxpc:any) {
+
+  eliminarElemento(cbxpc: any) {
     this.cbxpcs.splice(this.cbxpcs.findIndex(rol => rol === cbxpc), 1);
   }
 
@@ -144,22 +188,14 @@ export class RutaPantallaBuscadorComponent implements OnInit {
       alert("Palabra repetido");
 
     } else {
-      
+
       this.cbxpcs.push(this.palabraClave)
-      this.palabraClave=''
+      this.palabraClave = ''
     }
   }
-  incrementarbarra() {
 
-    for (let i = 0; i <= 1000;) {
-      // __await(10);if(ok){ i++
-      this.value = i * 100
-
-    }
-  }
   cargartabla() {
     this.estadotabla = true;
-    this.ActoresYTemas = listadeActores;
     this.ActoresA = this.actoresTemasObtenidos.Actores
     this.TemasA = this.actoresTemasObtenidos.Temas
   }
