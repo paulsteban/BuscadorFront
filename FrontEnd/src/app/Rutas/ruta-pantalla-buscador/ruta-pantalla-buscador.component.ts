@@ -81,7 +81,9 @@ export class RutaPantallaBuscadorComponent implements OnInit {
                 console.log(respuesta.ActoresTemas[0])
                 this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
                 this.botonProcesarActivado = true;
+                this.progressBar.complete();
 
+                this.cargartabla()
               },
               (error) => {
                 this.progressBar.complete();
@@ -100,7 +102,9 @@ export class RutaPantallaBuscadorComponent implements OnInit {
                 console.log(respuesta.ActoresTemas[0])
                 this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
                 this.botonProcesarActivado = true;
+                this.progressBar.complete();
 
+                this.cargartabla()
               },
               (error) => {
                 this.progressBar.complete();
@@ -119,7 +123,9 @@ export class RutaPantallaBuscadorComponent implements OnInit {
                 console.log(respuesta.ActoresTemas[0])
                 this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
                 this.botonProcesarActivado = true;
+                this.progressBar.complete();
 
+                this.cargartabla()
               },
               (error) => {
                 this.progressBar.complete();
@@ -139,7 +145,9 @@ export class RutaPantallaBuscadorComponent implements OnInit {
                 console.log(respuesta.ActoresTemas[0])
                 this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
                 this.botonProcesarActivado = true;
+                this.progressBar.complete();
 
+                this.cargartabla()
               },
               (error) => {
                 this.progressBar.complete();
@@ -154,9 +162,7 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
 
 
-        this.progressBar.complete();
-
-        this.cargartabla()
+        
       } else {
         this.presentarAlerta = true;
       }
