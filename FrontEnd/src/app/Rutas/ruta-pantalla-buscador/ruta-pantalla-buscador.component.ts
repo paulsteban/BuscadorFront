@@ -36,6 +36,7 @@ export class RutaPantallaBuscadorComponent implements OnInit {
   comerciomodel = false;
   scielomodel = false;
   doajmodel = false;
+  doajmodeles = false;
   presentarAlerta = false;
   actoresTemasObtenidos: ActoresTemasInterface;
   @ViewChild(NgProgressComponent) progressBar: NgProgressComponent;
@@ -64,8 +65,8 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
   obtenerFormulario(f: NgForm) {
     if (f.value.BrowQuery) {
-      if (this.nytmodel || this.comerciomodel || this.scielomodel || this.doajmodel) {
-
+      if (this.nytmodel || this.comerciomodel || this.scielomodel || this.doajmodel || this.doajmodeles) {
+        console.log(this.ActoresA+"actores eliminar")
 
         this.ActoresA = []
         this.TemasA = []
@@ -73,96 +74,39 @@ export class RutaPantallaBuscadorComponent implements OnInit {
         this.botonProcesarActivado = false;
         this.presentarAlerta = false;
 
-        if (this.comerciomodel) {
-          this._queryservicio.obtenerComercio(f.value.BrowQuery,
-            f.value.BrowEstado,
-            this.cbxpcs).subscribe(
-              (respuesta: InterfazQuery) => {
-                console.log(respuesta.ActoresTemas[0])
-                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
-                this.botonProcesarActivado = true;
-                this.progressBar.complete();
+          const objetoAGuardar = {
+            query: f.value.BrowQuery,
+            estado: f.value.BrowEstado,
+            palabrasClave: this.cbxpcs,
+            nyt: this.nytmodel,
+            doaj: this.doajmodel,
+            comercio: this.comerciomodel,
+            doajes: this.doajmodeles
+          };
 
-                this.cargartabla()
-              },
-              (error) => {
-                this.progressBar.complete();
-                this.botonProcesarActivado = true;
-                console.error('Error: ', error);
-                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
+          this._queryservicio.obtenerPalabrasRepetidas(objetoAGuardar).subscribe(
+            (respuesta: InterfazQuery) => {
+              console.log(respuesta.ActoresTemas[0])
+              this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
+              this.botonProcesarActivado = true;
+              this.progressBar.complete();
 
-
-              }
-            )
-        }else if (this.nytmodel){
-          this._queryservicio.obtenerNYT(f.value.BrowQuery,
-            f.value.BrowEstado,
-            this.cbxpcs).subscribe(
-              (respuesta: InterfazQuery) => {
-                console.log(respuesta.ActoresTemas[0])
-                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
-                this.botonProcesarActivado = true;
-                this.progressBar.complete();
-
-                this.cargartabla()
-              },
-              (error) => {
-                this.progressBar.complete();
-                this.botonProcesarActivado = true;
-                console.error('Error: ', error);
-                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
+              this.cargartabla()
+            },
+            (error) => {
+              this.progressBar.complete();
+              this.botonProcesarActivado = true;
+              console.error('Error: ', error);
+              alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
 
 
-              }
-            )
-        }else if(this.doajmodel){
-          this._queryservicio.obtenerDoaj(f.value.BrowQuery,
-            f.value.BrowEstado,
-            this.cbxpcs).subscribe(
-              (respuesta: InterfazQuery) => {
-                console.log(respuesta.ActoresTemas[0])
-                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
-                this.botonProcesarActivado = true;
-                this.progressBar.complete();
-
-                this.cargartabla()
-              },
-              (error) => {
-                this.progressBar.complete();
-                this.botonProcesarActivado = true;
-                console.error('Error: ', error);
-                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
-
-
-              }
-            )
-        }else{
-          console.log("scielo")
-          this._queryservicio.obtenerDoaj(f.value.BrowQuery,
-            f.value.BrowEstado,
-            this.cbxpcs).subscribe(
-              (respuesta: InterfazQuery) => {
-                console.log(respuesta.ActoresTemas[0])
-                this.actoresTemasObtenidos = respuesta.ActoresTemas[0];
-                this.botonProcesarActivado = true;
-                this.progressBar.complete();
-
-                this.cargartabla()
-              },
-              (error) => {
-                this.progressBar.complete();
-                this.botonProcesarActivado = true;
-                console.error('Error: ', error);
-                alert("Ha ocurrido un error al momento de obtener la información de las fuentes");
-
-
-              }
-            )
-        }
-
-
-
+            }
+          )
         
+
+
+
+
       } else {
         this.presentarAlerta = true;
       }
@@ -176,9 +120,6 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
   }
 
-  obtenerComercio() {
-
-  }
 
 
   eliminarElemento(cbxpc: any) {

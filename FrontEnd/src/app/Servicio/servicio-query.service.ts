@@ -16,7 +16,6 @@ export class ServicioQueryService {
 
     const url = environment.url;
 
-
     console.log(objetoGuardar)
 
     return this._httpClient
@@ -24,6 +23,14 @@ export class ServicioQueryService {
       .pipe(map(r => <InterfazQuery>r)); // Castear
   }
 
+  obtenerPalabrasRepetidas( objetoAGuardar: any): Observable<InterfazQuery> {
+
+    const url = environment.url+'obtenerPalabrasRepetidas';
+
+    return this._httpClient
+      .post(url, objetoAGuardar)
+      .pipe(map(r => <InterfazQuery>r)); // Castear
+  }
 
   obtenerNYT(query: string, estado: string, palabrasclaves: string[]): Observable<InterfazQuery> {
 
