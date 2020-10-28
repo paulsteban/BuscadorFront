@@ -1,5 +1,5 @@
 .view {
-  background: url("https://mdbootstrap.com/img/Photos/Others/img (40).jpg")no-repeat center center;
+  background: url("https://mdbootstrap.com/img/Photos/Others/img (40).jpg") no-repeat center center;
   background-size: cover;
   height: 100vh;
 }
@@ -8,27 +8,31 @@
   background-color: dark;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 200px) {
   .navbar.scrolling-navbar {
     padding-bottom: 12px;
     padding-top: 12px;
-    transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    background-color: black;
+  }
+  .navbar.scrolling-navbar.top-nav-collapse {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: black;
+  }
 }
-}
-
 
 .top-nav-collapse {
-  background-color: #4285F4;
-
+  background-color: #4285f4;
 }
 
 @media only screen and (max-width: 768px) {
   .navbar {
-      background-color: #4285F4;
+    background-color: #4285f4;
   }
 }
 
-.imagenResponsive{
+.imagenResponsive {
   width: 90%;
   height: auto;
 }

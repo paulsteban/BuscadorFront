@@ -128,17 +128,25 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
 
   agregarPalabra() {
+    if(this.palabraClave != '' && this.palabraClave != undefined){
+      console.log(this.palabraClave +"palabraaaaaaaaa clave");
 
-    const agregarrol = this.cbxpcs.some(rol => rol === this.palabraClave);
-    if (agregarrol == true) {
-      console.log("No se creo la palabra");
-      alert("Palabra repetido");
+      const agregarrol = this.cbxpcs.some(rol => rol === this.palabraClave);
+      if (agregarrol == true) {
+        console.log("No se creo la palabra");
+        alert("Palabra clave repetida");
+  
+      } else {
+  
+        this.cbxpcs.push(this.palabraClave)
+        this.palabraClave = ''
+      }
+    }else{
+      alert("La palabra clave no puede ser nula");
 
-    } else {
-
-      this.cbxpcs.push(this.palabraClave)
-      this.palabraClave = ''
     }
+
+    
   }
 
   cargartabla() {
