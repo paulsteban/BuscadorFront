@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: "http://45.79.18.150:5000/"
+  url: "http://localhost:5000/"
+  //url: "http://45.79.18.150:5000/"
 };
 
 /*
@@ -15,3 +16,6 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+

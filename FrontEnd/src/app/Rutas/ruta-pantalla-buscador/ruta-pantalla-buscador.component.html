@@ -126,7 +126,7 @@
     </div>
 
 
-    <img *ngIf="!botonProcesarActivado" width="600" height="100" src="../../../assets/internetcargado.gif" alt="">
+    <img *ngIf="!botonProcesarActivado" class="imagenResponsive" src="../../../assets/internetcargado.gif" alt="">
 
     <button *ngIf="botonProcesarActivado" class="btn btn-info my-4 btn-block" type="submit"
       [disabled]="!f.dirty">Generar lista</button>
