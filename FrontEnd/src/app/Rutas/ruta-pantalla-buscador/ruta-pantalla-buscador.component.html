@@ -42,8 +42,8 @@
 
 
         <div class=" custom-control custom-checkbox">
-          <input type="checkbox" [disabled]="comerciomodel || doajmodeles" class="custom-control-input" name="scielo" [(ngModel)]="scielomodel" id="scielo">
-          <label class="custom-control-label" for="scielo">SciELO</label>
+          <input type="checkbox" [disabled]="comerciomodel || doajmodeles" class="custom-control-input" name="springer" [(ngModel)]="springermodel" id="springer">
+          <label class="custom-control-label" for="springer">Springer</label>
         </div>
 
         <div class=" custom-control custom-checkbox">
@@ -59,12 +59,12 @@
         </small>
 
         <div class="custom-control custom-checkbox">
-          <input type="checkbox" [disabled]="scielomodel || doajmodel || nytmodel" class="custom-control-input" name="comercio" [(ngModel)]="comerciomodel" id="comercio">
+          <input type="checkbox" [disabled]="springermodel || doajmodel || nytmodel" class="custom-control-input" name="comercio" [(ngModel)]="comerciomodel" id="comercio">
           <label class="custom-control-label" for="comercio">El comercio</label>
         </div>
 
         <div class=" custom-control custom-checkbox">
-          <input type="checkbox" [disabled]="scielomodel || doajmodel || nytmodel" class="custom-control-input" name="doajes" [(ngModel)]="doajmodeles" id="doajes">
+          <input type="checkbox" [disabled]="springermodel || doajmodel || nytmodel" class="custom-control-input" name="doajes" [(ngModel)]="doajmodeles" id="doajes">
           <label class="custom-control-label" for="doajes">DOAJ</label>
         </div>
 

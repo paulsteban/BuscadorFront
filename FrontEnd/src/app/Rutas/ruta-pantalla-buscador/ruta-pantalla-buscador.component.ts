@@ -34,7 +34,7 @@ export class RutaPantallaBuscadorComponent implements OnInit {
   palabraClave: string;
   nytmodel = false;
   comerciomodel = false;
-  scielomodel = false;
+  springermodel = false;
   doajmodel = false;
   doajmodeles = false;
   presentarAlerta = false;
@@ -65,7 +65,7 @@ export class RutaPantallaBuscadorComponent implements OnInit {
 
   obtenerFormulario(f: NgForm) {
     if (f.value.BrowQuery) {
-      if (this.nytmodel || this.comerciomodel || this.scielomodel || this.doajmodel || this.doajmodeles) {
+      if (this.nytmodel || this.comerciomodel || this.springermodel || this.doajmodel || this.doajmodeles) {
         console.log(this.ActoresA+"actores eliminar")
 
         this.ActoresA = []
@@ -81,7 +81,8 @@ export class RutaPantallaBuscadorComponent implements OnInit {
             nyt: this.nytmodel,
             doaj: this.doajmodel,
             comercio: this.comerciomodel,
-            doajes: this.doajmodeles
+            doajes: this.doajmodeles,
+            springer:this.springermodel
           };
 
           this._queryservicio.obtenerPalabrasRepetidas(objetoAGuardar).subscribe(
